@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using NET_React_Auth_New.Models;
 
 namespace NET_React_Auth_New.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : Controller
@@ -28,7 +30,7 @@ namespace NET_React_Auth_New.Controllers
             return await _context.Customers.ToListAsync();
         }
 
-        // GET: api/Customer/guid
+        // GET: api/Customers/guid
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(Guid id)
         {
@@ -42,7 +44,7 @@ namespace NET_React_Auth_New.Controllers
             return customer;
         }
 
-        // POST: api/Customer
+        // POST: api/Customers
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer item)
         {
@@ -53,24 +55,36 @@ namespace NET_React_Auth_New.Controllers
             return CreatedAtAction(nameof(GetCustomer), new { id = item.CustomerID }, item);
         }
 
-        // PUT: api/Customer/guid
+        // PUT: api/Customers/guid
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(Guid id, Customer item)
         {
-            if (id != item.CustomerID)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return BadRequest();
             }
+            customer.CustomerFirstName = item.CustomerFirstName;
+            customer.CustomerLastName = item.CustomerLastName;
+            customer.CustomerCompanyName = item.CustomerCompanyName;
+            customer.CustomerFirstStreetAddress = item.CustomerFirstStreetAddress;
+            customer.CustomerScndStreetAddress = item.CustomerScndStreetAddress;
+            customer.CustomerCity = item.CustomerCity;
+            customer.CustomerState = item.CustomerState;
+            customer.CustomerZipCode = item.CustomerZipCode;
+            customer.CustomerCountry = item.CustomerCountry;
+            customer.CustomerPhoneNumber = item.CustomerPhoneNumber;
+            customer.CustomerEmail = item.CustomerEmail;
 
-            _context.Entry(item).State = EntityState.Modified;
+            _context.Entry(customer).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok();
         }
 
-        // DELETE: api/Customer/guid
+        // DELETE: api/Customers/guid
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePart(Guid id)
+        public async Task<IActionResult> DeleteCustomer(Guid id)
         {
             var customer = await _context.Customers.FindAsync(id);
 
@@ -82,7 +96,7 @@ namespace NET_React_Auth_New.Controllers
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok();
         }
     }
 }
