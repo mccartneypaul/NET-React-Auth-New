@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import authService from './AuthorizeService';
 import { ApplicationPaths } from './ApiAuthorizationConstants';
+import Link from '@material-ui/core/Link';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 
 export class LoginMenu extends Component {
     constructor(props) {
@@ -45,25 +46,27 @@ export class LoginMenu extends Component {
     }
 
     authenticatedView(userName, profilePath, logoutPath) {
+        const theme = createMuiTheme();
         return (<Fragment>
-            <NavItem>
-                <NavLink tag={Link} className="text-dark" to={profilePath}>Hello {userName}</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink tag={Link} className="text-dark" to={logoutPath}>Logout</NavLink>
-            </NavItem>
+            <nav>
+                <Link variant="button" tag={Link} color="textPrimary" style={{ margin: theme.spacing(1, 1.5) }}
+                    href={profilePath}>Hello {userName}</Link>
+                <Link variant="button" tag={Link} color="textPrimary" style={{ margin: theme.spacing(1, 1.5) }}
+                    href={logoutPath}>Logout </Link>
+            </nav>
         </Fragment>);
 
     }
 
     anonymousView(registerPath, loginPath) {
+        const theme = createMuiTheme();
         return (<Fragment>
-            <NavItem>
-                <NavLink tag={Link} className="text-dark" to={registerPath}>Register</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink tag={Link} className="text-dark" to={loginPath}>Login</NavLink>
-            </NavItem>
+            <nav>
+                <Link variant="button" tag={Link} color="textPrimary" style={{ margin: theme.spacing(1, 1.5) }}
+                    href={registerPath}>Register</Link>
+                <Link variant="button" tag={Link} color="textPrimary" style={{ margin: theme.spacing(1, 1.5) }}
+                    href={loginPath}>Login</Link>
+            </nav>
         </Fragment>);
     }
 }
