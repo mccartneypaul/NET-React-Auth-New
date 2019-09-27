@@ -17,5 +17,10 @@ namespace NET_React_Auth_New.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Prospect> Prospects { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
     }
 }

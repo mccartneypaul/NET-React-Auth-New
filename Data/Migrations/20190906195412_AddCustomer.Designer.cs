@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NET_React_Auth_New.Data;
 
 namespace NET_React_Auth_New.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190906195412_AddCustomer")]
+    partial class AddCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,29 +294,6 @@ namespace NET_React_Auth_New.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("NET_React_Auth_New.Models.Contract", b =>
-                {
-                    b.Property<Guid>("ContractID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ContractCustomerID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ContractDescription")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ContractEndDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ContractStartDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ContractID");
-
-                    b.ToTable("Contracts");
-                });
-
             modelBuilder.Entity("NET_React_Auth_New.Models.Customer", b =>
                 {
                     b.Property<Guid>("CustomerID")
@@ -360,52 +339,6 @@ namespace NET_React_Auth_New.Data.Migrations
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("NET_React_Auth_New.Models.Prospect", b =>
-                {
-                    b.Property<Guid>("ProspectID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProspectDescription")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProspectLastUpdateDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProspectLastUpdateStaff")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ProspectRcvdDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProspectID");
-
-                    b.ToTable("Prospects");
-                });
-
-            modelBuilder.Entity("NET_React_Auth_New.Models.Staff", b =>
-                {
-                    b.Property<Guid>("StaffID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StaffEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StaffFirstName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StaffLastName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StaffRole")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("StaffID");
-
-                    b.ToTable("Staff");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
+<<<<<<< HEAD
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET-React-Auth-New", "NET-React-Auth-New.csproj", "{A70CC263-9D53-4087-A8F7-11B36B5F8EA1}"
+=======
+VisualStudioVersion = 16.0.29230.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET-React-Auth-New", "NET-React-Auth-New.csproj", "{2C630F01-2D76-4C64-8D45-44A456C22021}"
+>>>>>>> master
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +17,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{A70CC263-9D53-4087-A8F7-11B36B5F8EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A70CC263-9D53-4087-A8F7-11B36B5F8EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A70CC263-9D53-4087-A8F7-11B36B5F8EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A70CC263-9D53-4087-A8F7-11B36B5F8EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{2C630F01-2D76-4C64-8D45-44A456C22021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C630F01-2D76-4C64-8D45-44A456C22021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C630F01-2D76-4C64-8D45-44A456C22021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C630F01-2D76-4C64-8D45-44A456C22021}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> master
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD
 		SolutionGuid = {7E3301B4-1AB1-45AB-8A0B-1F38427A2AD4}
+=======
+		SolutionGuid = {5D7754D1-0360-4404-A051-EB7AD0422794}
+>>>>>>> master
 	EndGlobalSection
 EndGlobal
