@@ -231,4 +231,8 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+# Sqlite Files
 app.db
+app.db-shm
+app.db-wal
+
