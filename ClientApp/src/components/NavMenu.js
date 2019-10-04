@@ -1,52 +1,74 @@
-import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { LoginMenu } from './api-authorization/LoginMenu';
-import './NavMenu.css';
 
-export class NavMenu extends Component {
-  static displayName = NavMenu.name;
+const useStyles = makeStyles(theme => ({
+    '@global': {
+        body: {
+            backgroundColor: theme.palette.common.white,
+        },
+        ul: {
+            margin: 0,
+            padding: 0,
+        },
+        li: {
+            listStyle: 'none',
+        },
+    },
+    appBar: {
+        borderBottom: `1px solid ${theme.palette.divider}`,
+    },
+    toolbar: {
+        flexWrap: 'wrap',
+    },
+    toolbarTitle: {
+        flexGrow: 1,
+    },
+    link: {
+        margin: theme.spacing(1, 1.5),
+    },
+    footer: {
+        borderTop: `1px solid ${theme.palette.divider}`,
+        marginTop: theme.spacing(8),
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(3),
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: theme.spacing(6),
+            paddingBottom: theme.spacing(6),
+        },
+    },
+}));
 
-  constructor (props) {
-    super(props);
+export default function PrimarySearchAppBar() {
+    const classes = useStyles();
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true
-    };
-  }
-
-  toggleNavbar () {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  }
-
-  render () {
     return (
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarBrand tag={Link} to="/">NET_React_Auth_New</NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
-                <LoginMenu>
-                </LoginMenu>
-              </ul>
-            </Collapse>
-          </Container>
-        </Navbar>
-      </header>
+        <div className={classes.grow}>
+            <CssBaseline />
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                <Toolbar className={classes.toolbar}>
+                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                        Unfolding Technology
+                    </Typography>
+                    <nav>
+                        <Link variant="button" tag={Link} color="textPrimary" href="/" className={classes.link}>
+                            Home
+                        </Link>
+                        <Link variant="button" tag={Link} color="textPrimary" href="/counter" className={classes.link}>
+                            Counter
+                        </Link>
+                        <Link variant="button" tag={Link} color="textPrimary" href="/fetch-data" className={classes.link}>
+                            Fetch Data
+                        </Link>
+                    </nav>
+                    <LoginMenu className={classes.link}/>
+                </Toolbar>
+            </AppBar>
+        </div>
     );
-  }
 }
